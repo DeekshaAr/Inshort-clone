@@ -4,6 +4,7 @@ import "./App.css";
 import NavInshort from "./components/NavInshort";
 import NewsContent from "./components/NewsContent/NewsContent";
 import apikey from "./data/config";
+import Footer from "./components/Footer";
 
 function App() {
   const [category, setCategory] = useState("general");
@@ -34,6 +35,7 @@ function App() {
     <div className="App">
       <NavInshort setCategory={setCategory} />
       <NewsContent />
+      <Footer />
     </div>
   );
 }
