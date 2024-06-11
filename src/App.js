@@ -31,6 +31,7 @@ function App() {
   //Used when newsresults or category is going to change
   useEffect(() => {
     newsApi();
+    //eslint-disable-next-line
   }, [newsResults, category, loadmore]);
 
   return (
