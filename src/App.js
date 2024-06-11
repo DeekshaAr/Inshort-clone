@@ -10,11 +10,12 @@ function App() {
   const [category, setCategory] = useState("general");
   const [newsArray, setNewsArray] = useState([]);
   const [newsResults, setNewsResults] = useState([]);
+  const [loadmore, setLoadmore] = useState(20); //display 20 news
 
   const newsApi = async () => {
     try {
       const news = await axios.get(
-        `https://newsapi.org/v2/top-headlines?country=in&apiKey=${apikey}&category=${category}`
+        `https://newsapi.org/v2/top-headlines?country=in&apiKey=${apikey}&category=${category}&pageSize=${loadmore}`
       );
       setNewsArray(news.data.articles);
       setNewsResults(news.data.totalResults);
@@ -29,12 +30,17 @@ function App() {
   //Used when newsresults or category is going to change
   useEffect(() => {
     newsApi();
-  }, [newsResults, category]);
+  }, [newsResults, category, loadmore]);
 
   return (
     <div className="App">
       <NavInshort setCategory={setCategory} />
-      <NewsContent newsArray={newsArray} newsResults={newsResults} />
+      <NewsContent
+        setLoadmore={setLoadmore}
+        loadmore={loadmore}
+        newsArray={newsArray}
+        newsResults={newsResults}
+      />
       <Footer />
     </div>
   );
