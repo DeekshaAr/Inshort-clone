@@ -15,7 +15,7 @@ function App() {
     try {
       const apiKey = process.env.REACT_APP_API_KEY;
       const news = await axios.get(
-        `/api/v2/top-headlines?country=us&category=${category}&apiKey=${apiKey}`
+        `/api/v2/top-headlines?country=in&category=${category}&apiKey=${apiKey}`
       );
       setNewsArray(news.data.articles);
       setNewsResults(news.data.totalResults);
